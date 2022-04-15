@@ -11,25 +11,41 @@ Back buttons, undo functionality, and function calls in programming are usually 
 
 The time complexity of stack operations depends on the implementation of a stack. Some implementations use arrays or array lists, which mean that the operations have similar complexities to those of an array. Others use nodes and pointers or linked lists and therefore would have similar complexities.
 
-
 ## Code Example using Nodes
-```python
-class Node:
-	def __init__(self, data, next):
-		self.data = data
-		self.next = next
-
-class Stack:
-	def __init__(self):
-		self.head = None
+```Java
+public class Node() {
+    private Object data;
+	private Node next;
 	
-	def push(self, data):
-		self.head = Node(data, self.head)
+	public Node(Object data) {
+		this.data = data;
+		this.next = null;
+	}
+	public Node(Object data, Node next) {
+		this.data = data;
+		this.next = next;
+	}
+}
 
-	def pop(self):
-		data = self.head.data
-		self.head = self.head.next
-		return data 
+public class Stack() {
+	private Node head;
+	
+	public Stack(Object object) {
+		this.head = new Node(object, null);
+	}
+
+	public Stack push(Object data) {
+		head = new Node(data, head);
+	}
+	public Object pop() {
+		Object data = head.data;
+		head = head.next;
+		return data;
+	}
+	public Object peek() {
+		return head.data;
+	}
+}
 ```
 In the above example, the big-O complexity looks like:
 
@@ -38,35 +54,58 @@ In the above example, the big-O complexity looks like:
 |Access   |O(n)      |
 |Search   |O(n)      |
 |Insert   |O(1)      |
-|Delete   |O(1)      | 
+|Delete   |O(1)      |
 
 In order to access an item or search for one we would have to traverse the linked list. Inserting an item will always happen from the top, so it will always happen in constant time.
 
 
 ## Code Example using an Array
-```python 
-class Stack:
-	
-	def __init__(self):
-		self.data = []
+```Java
+public class Stack {
+	private int storage[];
+	private int top;
+	private int capacity;
 
-	def push(self, item):
-		self.data.append(item)
+	public Stack(int size) {
+		storage = new int[size];
+		capacity = size;
+		top = -1;
+	}
 
-	def pop(self):
-		return self.data.pop()
-
-	def peek(self):
-		return self.data[-1]
+	public boolean push(int data) {
+		if (isFull()) {
+			return false;
+		}
+		storage[top++] = data;
+	}
+	public int pop() {
+		if (isEmpty()) {
+			return null;
+		}
+		return storage[top--];
+	}
+	public int peek() {
+		if (isEmpty()) {
+			return null;
+		}
+		return storage[top];
+	}
+	public Boolean isFull() {
+		return top === capacity - 1;
+	}
+	public Boolean isEmpty() {
+		return top === -1;
+	}
+}
 ```
 In the above example, the big-O complexity looks like:
 
 |Operation|Complexity|
 |---------|----------|
-|Access   |O(1)      |
+|Access   |O(n)      |
 |Search   |O(n)      |
 |Insert   |O(1)      |
-|Delete   |O(1)      | 
+|Delete   |O(1)      |
 
 In order to access an item or search for one we would have to traverse the linked list. Inserting an item will always happen from the top, so it will always happen in constant time. Python [optimizes](https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt) append and pop if they are at the end of a list, so the operations also happen in constant time. Some other implementations of arrays would not have similar optimizations and would then have insertion and deletion at O(n).
 
