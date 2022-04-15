@@ -31,79 +31,203 @@ Some linked lists use sentinel nodes, which are "dummy" nodes that ensure the fi
 In order to access an item or search the list, you must traverse the whole thing. In order to insert or delete nodes, you only need to move the position of pointers.
 
 ## Singly Linked List
-```python
-class Node:
+```java
+public class Node<Object> {
+    private Node next;
+    private Object data;
 
-    def __init__(self, data, next):
-        self.data = data
-        self.next = next
+    public Node(Object data) {
+        this.next = null;
+        this.data = data;
+    }
+    public Node(Object data, Node next) {
+        this.next = next;
+        this.data = data;
+    }
+    public Object getData() {
+        return data;
+    }
+    public void setData(Object data) {
+        this.data = data;
+    }
+    public Node getNext() {
+        return next;
+    }
+    public void setNext(Node next) {
+        this.next = next;
+    }
+}
 
+public class SinglyLinkedList<Node>{
+    private Node head;
+    private int length;
 
-class SinglyLinkedList:
+    public SinglyLinkedList() {
+        head = null;
+        length = 0;
+    }
+    public void add(Object data) {
+        add(data, length);
+    }
+    public void add(Object data, int index) {
+        Node newNode = new Node(data);
+        Node current = head;
 
-    def __init__(self):
-        self.head = None
-        self.length = 0
-    
-    def insert(self, data):
-        self.head = Node(data, self.head)
-        self.length += 1
-    
-    def remove_at_index(self, idx):
-        dummy = Node(None, self.head)
-        prev, curr = dummy, dummy.next
-        check_idx = 0
-        
-        while curr:
-            print(idx, check_idx)
-            if idx == check_idx:
-                prev.next = curr.next
-                curr.next = None
-            check_idx += 1
-            prev, curr = curr, curr.next
+        if (head === null) {
+            head = newNode;
+            length++;
+            return;
+        }
 
-    def iterate(self):
-        node = self.head
-        while(node):
-            print(node.data)
-            node = node.next
+        if (current !== null && index > 0 && index <= length) {
+            for (int i = 0; i < index && current.getNext() !== null; i++) {
+                current = current.getNext();
+            }
+        }
+        newNode.setNext(current.getNext());
+        current.setNext(newNode);
+        length++;
+    }
+    public boolean remove(int index) {
+        if (index < 1 || index > length || head === null) {
+            return null;
+        } else if (index === 0 && head !== null) {
+            head = head.getNext();
+            return true;
+        }
+        Node current = head;
+        Node prev = null;
+        for (int i = 0; i < index; i++) {
+            if (current.getNext() !== null) {
+                prev = current;
+                current = current.getNext();
+            } else {
+                return false;
+            }
+        }
+        prev.setNext(current.getNext());
+        list--;
 
-    def search(self, data):
-        idx = 0
-        node = self.head
-        while node:
-            if node.data == data: return idx
-            node = node.next
-            idx += 1
-        return -1
+        return true;
+    }
+    public int search(Object data) {
+        Node current;
+        if (head !== null && data instanceof Object) {
+            current = head.getNext();
+            for (int i = 0; i < length; i++) {
+                if (current.getData === data) {
+                    return i;
+                }
+            }
+        }
+        return null;
+    }
+}
+
 ```
 
 ## Doubly Linked List
-```python
-class Node:
+```java
+public class Node<Object> {
+    private Node next;
+    private Node prev;
+    private Object data;
 
-    def __init__(self, data, next=None, prev=None):
-        self.data = data
-        self.next = next
-        self.prev = prev
+    public Node(Object val) {
+        this.next = null;
+        this.prev = null;
+        this.data = val;
+    }
+    public Node(Object data, Node next, Node prev) {
+        this.next = next;
+        this.prev = prev;
+        this.data = data;
+    }
+    public Object getData() {
+        return data;
+    }
+    public void setData(Object data) {
+        this.data = data;
+    }
+    public Node getNext() {
+        return next;
+    }
+    public void setNext(Node next) {
+        this.next = next;
+    }
+    public Node getPrev() {
+        return prev;
+    }
+    public void setPrev(Node prev) {
+        this.prev = prev;
+    }
+}
 
+public class DoublyLinkedList<Node> {
+    private int length;
+    private Node head;
+    private Node tail;
 
-class DoublyLinkedList:
-    
-    def __init__(self):
-        self.head = None
-        self.tail = None
-        self.length = 0
+    public DoublyLinkedList() {
+        length = 0;
+        head = null;
+        tail = null;
+    }
+    public add(Object data) {
+        add(data, length);
+    }
+    public add(Object data, int index) {
+        Node newNode = new Node(data);
+        Node current = head;
 
-    def insert(self, data):
-        new_node = Node(data, None, self.head)
-        if not self.head:
-            self.head = new_node
-        else:
-            self.tail.next = new_node
-            new_node.prev = self.tail
-        self.tail = new_node
-        self.length += 1
+        if (head === null) {
+            head = newNode;
+            length++;
+            return;
+        }
+
+        if (current !== null && index > 0 && index <= length) {
+            for (int i = 0; i < index && current.getNext() !== null; i++) {
+                current = current.getNext();
+            }
+        }
+        newNode.setNext(current.getNext());
+        current.setNext(newNode);
+        newNode.setPrev(current);
+
+        if (newNode.getNext() === null) {
+            tail = newNode;
+        }
+        length++;
+    }
+    public boolean remove(int index) {
+        if (index < 0 || index > length || head === null) {
+            return false;
+        }
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            if (current.getNext() !== null) {
+                current = current.getNext();
+            } else {
+                return false;
+            }
+        }
+        Node prev = current.getPrev();
+        Node next = current.getNext();
+        prev.setNext(next);
+        next.setPrev(prev);
+        length--;
+        return true;
+    }
+    public int search(Object data) {
+        if (head !== null && data instance of Object) {
+            Node current = head;
+            for (int i = 0; i < length; i++) {
+                
+            }
+        }
+    }
+}
 ```
 
 ## Practice Problems
