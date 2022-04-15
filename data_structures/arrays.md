@@ -13,6 +13,8 @@ The stack is just a classical stack structure. You can push elements to the top 
 
 The set is a collection of objects where each object is unique. An object cannot occur more than once in a Java Set. The elements in a Set have no guaranteed internal order.
 
+The LinkedHashSet is an ordered HashSet that maintains a doubly-linked List across all elements. Use this when iteration order is needed to be maintained.
+
 ```Java
 // Array
 String[] names = {"John", "Jacob", "Smith"};
@@ -126,7 +128,7 @@ setA.add(element);
 setA.contains(element);
 
 for (String name : set) {
-    
+
 }
 
 ```
