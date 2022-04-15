@@ -3,8 +3,9 @@
 ## About
 Arrays are collections of elements that can be identified by an index. They are used to implement a ton of other data structures -- like queues, stacks, lists, and sometimes strings.
 
-```python
-x = [1, 2, 3]
+```Java
+String[] names = {"John", "Jacob", "Smith"};
+int[] nums = {10, 20, 30, 40};
 ```
 
 In most languages, indexing starts at 0. The first item in an array can be found at the index 0. Arrays can also have multiple dimensions so matrix operations commonly use them in computer science.
@@ -14,6 +15,17 @@ Arrays are stored in memory contiguously, or in one chunk of space, so the memor
 Arrays have a fixed size when they are created, so insertion and deletion is not natively supported. If you were able to change the size of an array during runtime, there would be no guarantee that there would be more memory in its reserved block to use.
 
 Many high level languages take care of resizing behind the scenes by using dynamic arrays, so the user doesn't need to initialize the array with a certain size. For example, in Python, lists are initialized automatically with overfill (or additional unused slots). They resize at 4, 8, 16, 25 etc. items ([source](https://www.laurentluce.com/posts/python-list-implementation/)). From a computational perspective, this makes them less efficient but a lot more programmer friendly!
+
+In Java, ArrayLists use a lot of memory. If you need an array that grows as you are initializing, consider using a Builder for array creation ex. IntStream, LongStream, DoubleStream, Stream ([source](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.Builder.html)). You can create a stream by generating elements individually and adding them to a builder without the copying overhead that comes from using a temporary ArrayList. Instead of copying, the builder will use multiple arrays for better performance. Another benefit to Stream.Builder is that it can deal with > 2^31 elements if you have the memory.
+
+```Java
+Builder builder = IntStream.builder();
+int arraySize = new Random().nextInt();
+for (int i = 0; i < arraySize; i++) {
+    builder.add(i);
+}
+int[] array = builder.build().toArray();
+```
 
 
 ## Complexity
