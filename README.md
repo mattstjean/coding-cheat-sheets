@@ -14,6 +14,7 @@ Simple, quick cheat sheets on computer science concepts.
 * [Queues](/data_structures/queue.md)
 * [Stacks](/data_structures/stack.md)
 * [Trees](/data_structures/trees.md)
+* [Tries](/data_structures/tries.md)
 
 ## Fundamentals
 * [Big-O Notation](/fundamentals/big_o_notation.md)
