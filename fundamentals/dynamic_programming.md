@@ -1,7 +1,7 @@
 # Dynamic Programming
 Dynamic programming is an optimization over plain recursion. Whenever we see a repeated recursive call for a smaller subproblem, we can optimize that recursive call with the help of dynamic programming. The idea is simply to store the result so that we don't have to re-compute the subproblem again and again.
 
-Dynamic programming = recursion + memorization
+Dynamic programming = recursion + memoization
 
 The sample code below demonstrates returning the nth Fibonacci Number.
 
@@ -21,12 +21,12 @@ public int fib(int n) {
 
 // Dynamic Programming
 public int fib(int n) {
-    int storage[] = new int[n];
-    storage[0] = 0;
-    storage[1] = [1];
+    int memo[] = new int[n];
+    memo[0] = 0;
+    memo[1] = [1];
     for (int i = 2; i <= n; i++) {
-        storage[i] = storage[i - 1] + storage[i - 2];
+        memo[i] = memo[i - 1] + memo[i - 2];
     }
-    return storage[n];
+    return memo[n];
 }
 ```
