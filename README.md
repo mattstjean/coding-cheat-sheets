@@ -20,6 +20,7 @@ Simple, quick cheat sheets on computer science concepts.
 * [Big-O Notation](/fundamentals/big_o_notation.md)
 * [Recursion](/fundamentals/recursion.md)
 * [Dynamic Programming](/fundamentals/dynamic_programming.md)
+* [Bitwise Operators](/fundamentals/bitwise_operators.md)
 
 ## Searching
 * [Breadth First Search](/searching/breadth_first_search.md)
