@@ -21,6 +21,7 @@ Simple, quick cheat sheets on computer science concepts.
 * [Recursion](/fundamentals/recursion.md)
 * [Dynamic Programming](/fundamentals/dynamic_programming.md)
 * [Bitwise Operators](/fundamentals/bitwise_operators.md)
+* [Bit-Shift Operators](/fundamentals/bit_shift_operators.md)
 
 ## Searching
 * [Breadth First Search](/searching/breadth_first_search.md)
