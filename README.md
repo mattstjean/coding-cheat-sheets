@@ -35,3 +35,6 @@ Simple, quick cheat sheets on computer science concepts.
 
 ## Contribute
 Feel free to add pull requests to add information to any of these sheets or create a new one!
+
+## Notes
+Forked from [aspittel's](https://github.com/aspittel/coding-cheat-sheets) original coding sheet. Samples in Java, concepts expanded, and details added.
