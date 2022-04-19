@@ -1,6 +1,9 @@
 # Hash Tables
 
+([Back to menu](/README.md))
+
 ## About
+
 Hash tables are data structures that map keys to values. Hashing functions compute indexes where desired values can be found. The biggest difficulty with hashing functions are collisions, which happen when the hashing function computes the same index for multiple values. They are synchronized versions of HashMaps.
 
 Dictionaries in Python are an implementation of a hash table.
@@ -11,6 +14,7 @@ dict = {
     'yes': 'please'
 }
 ```
+
 ```java
     Hashtable<String, Integer> numbers = new Hashtable<String, Integer>();
     numbers.put("one", 1);
@@ -32,6 +36,7 @@ dict = {
 ```
 
 ## Hashing Functions
+
 Hashing functions aim to distribute the key-value pairs across buckets  evenly -- a perfect hashing function would allow for constant time lookups in all cases.
 
 Usually, we can't avoid collisions -- if 2,450 random keys are hashed into a million buckets then there is a [95% chance](https://en.wikipedia.org/wiki/Hash_table) of a collision.
@@ -45,6 +50,7 @@ With Quadradic Probing, the distance between probes increases by the step - dist
 With Double Hashing, the distance between probes is calculated using another hash function.
 
 ## Example Code - Separate Chaining
+
 ```Java
 public class LinkedHashEntry {
     private int key;
@@ -68,9 +74,11 @@ public class HashMap {
             table[i] = null;
         }
     }
+
     private int hashKey(int key) {
         return key % CAPACITY;
     }
+
     public int get(int key) {
         int hash = hashKey(key);
         if (table[hash] === null) {
@@ -85,6 +93,7 @@ public class HashMap {
         }
         return null;
     }
+
     public void put(int key, int value) {
         int hash = hashKey(key);
         if (table[hash] === null) {
@@ -101,6 +110,7 @@ public class HashMap {
             }
         }
     }
+
     public boolean remove(int key) {
         int hash = hashKey(key);
         if (table[hash] !== null) {
@@ -121,7 +131,9 @@ public class HashMap {
     }
 }
 ```
+
 ## Example Code - Linear Probing
+
 ```Java
 public class HashEntry {
     private int key;
@@ -131,6 +143,7 @@ public class HashEntry {
         this.value = value;
     }
 }
+
 public class DeletedEntry extends HashEntry {
     private static DeletedEntry entry = null;
     private DeletedEntry() {
@@ -170,6 +183,7 @@ public class HashTable {
             return table[hash].value;
         }
    }
+
    public int put(int key) {
        int hash = key % CAPACITY;
        int initial = -1;
@@ -196,6 +210,7 @@ public class HashTable {
             }
         }
    }
+
    public void remove(int key) {
        int hash = key % CAPACITY;
        int initial = -1;
@@ -211,16 +226,16 @@ public class HashTable {
             table[hash] = DeletedEntry.getUniqueDeletedEntry();
         }
    }
-
 }
-``` 
+```
 
 ## Complexity
+
 |Operation|Complexity|
 |---------|----------|
 |Access   |O(1) -> O(n)|
 |Search   |O(1) -> O(n)|
 |Insert   |O(1) -> O(n)|
-|Delete   |O(1) -> O(n)| 
+|Delete   |O(1) -> O(n)|
 
-The complexities of each of the above operations depend on the hashing function used. A perfect hashing function where keys and values are all known before runtime would run at O(1) for all of the above functions. Most are closer to O(n) in actual applications (like those above). 
+The complexities of each of the above operations depend on the hashing function used. A perfect hashing function where keys and values are all known before runtime would run at O(1) for all of the above functions. Most are closer to O(n) in actual applications (like those above).

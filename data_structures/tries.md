@@ -1,6 +1,9 @@
 # Tries
 
+([Back to menu](/README.md))
+
 ## About
+
 A trie (sometimes known as a digital tree, prefix tree, or radix tree) is a discrete data structure. It's not well-known, but it is important. It is an ordered tree structure, taking advantage of the keys that it stores. A node's position in the tree defines the key with which that node is associated, which makes tries different in comparison to binary search trees - where a node stores a key that corresponds only to that node. All descendants of a node have a common prefix of a String associated with that node, whereas the root is associated with an empty String.
 
 Reference: [source](https://www.baeldung.com/trie-java).
@@ -41,8 +44,8 @@ With tries, every node (except root) stores one character or digit. By traversin
 |Insert   |O(n)      |
 |Delete   |O(n)      |
 
-
 ## Sample Code
+
 ```Java
 // Within Trie.class
 public void insert(String word) {

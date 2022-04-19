@@ -1,6 +1,9 @@
 # Arrays
 
+([Back to menu](/README.md))
+
 ## About
+
 Arrays are collections of elements that can be identified by an index. They are used to implement a ton of other data structures -- like queues, stacks, lists, and sometimes strings.
 
 The Deque is a double-ended queue, extending the Queue interface. To implement a LIFO (Last-In-First-Out) stack in Java, use a deque instead of the Stack class. It is likely to be faster.
@@ -19,6 +22,7 @@ The LinkedHashSet is an ordered HashSet that maintains a doubly-linked List acro
 // Array
 String[] names = {"John", "Jacob", "Smith"};
 int[] nums = {10, 20, 30, 40};
+int[] nums = new int(4);
 
 // ArrayList
 ArrayList<String> names = new ArrayList<String>();
@@ -144,7 +148,6 @@ List vs. Set
 |Impl.: ArrayList, LinkedList   |Impl.:HashSet, LinkedHashSet          |
 |       Vector, Stack           |                                      |
 
-
 In most languages, indexing starts at 0. The first item in an array can be found at the index 0. Arrays can also have multiple dimensions so matrix operations commonly use them in computer science.
 
 Arrays are stored in memory contiguously, or in one chunk of space, so the memory address of each element in the array can be computed using this formula `address = start + (cellsize * index)`. So an array with three 32-bit integer variables could be stored at addresses 2000, 2004, 2008 so then the address of an item would be 2000 + 4 * index. In many implementations of arrays, the array block of memory only stores a pointer to the item in the array rather than the item itself in order to support dynamic typing.
@@ -164,7 +167,6 @@ for (int i = 0; i < arraySize; i++) {
 int[] array = builder.build().toArray();
 ```
 
-
 ## Complexity
 
 |Operation|Complexity|
@@ -172,16 +174,17 @@ int[] array = builder.build().toArray();
 |Access   |O(1)      |
 |Search   |O(n)      |
 |Insert   |O(n)      |
-|Delete   |O(n)      | 
+|Delete   |O(n)      |
 
 ### Explanation
+
 * Accessing can be done using the formula `start + (cellsize * index)`
 * Searching is done by iterating through the array and seeing if the value equals the item you are searching for.
 * Insertion is done by recreating the array, which means that each item must be recreated.
 * Deletion is done by recreating the array, which means that each item must be recreated.
 
-
 ## Practice Problems
+
 * [Check to see if two strings are anagrams of one another.](https://www.udemy.com/python-for-data-structures-algorithms-and-interviews/learn/v4/overview)
 * [Check to see if two strings are permutations of each other.](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X)
 * [Compress a string](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X)

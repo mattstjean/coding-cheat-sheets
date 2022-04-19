@@ -1,6 +1,9 @@
 # Trees
 
+([Back to menu](/README.md))
+
 ## About
+
 Trees are graph data structures that are hierarchical and unidirectional. They have a root value, and then sub-trees of children that each have parents. They are represented as a series of linked nodes. Each node has a value and then pointers to its children.
 
 Trees have nodes and vertices without any cycles. They are also directed - the parents point down to the children rather than having bidirectional relationships.
@@ -16,11 +19,13 @@ public class Node {
     private int value;
     Node left;
     Node right;
+
     public Node(int value) {
         this.value = value;
         this.right = null;
         this.left = null;
     }
+
     public Node(int value, Node left, Node right) {
         this. value = value;
         this.right = right;
@@ -33,8 +38,8 @@ public class BinaryTree {
 }
 ```
 
-
 ## Glossary
+
 * **Root** - the top node of the tree.
 * **Child** - a node below the parent.
 * **Parent** - a node above a child. Note - a node can be both a parent and a child!
@@ -43,9 +48,9 @@ public class BinaryTree {
 * **Branch** - a node with a child.
 * **Edge** - Connection between nodes.
 
-
 ## Tree Visual
-```
+
+```text
           A                     
         ↙   ↘              
       B       C                
@@ -54,6 +59,7 @@ public class BinaryTree {
 ```
 
 ## Common Operations
+
 * **Searching** - Searching a binary search tree for a specific key can be programmed recursively or iteratively.
 
 ## Recursive Search
@@ -75,6 +81,7 @@ public Node searchRecursively(Node current, int value) {
 ```
 
 ## Iteratively
+
 ```Java
 public Node searchIteratively(Node current, int value) {
     while (current !== null) {
@@ -118,9 +125,11 @@ private int findSmallestValue(Node node) {
     }
     return current;
 }
+
 private Node delete(int value) {
     root = delete(root, value);
 }
+
 private Node delete(Node node, int value) {
     Node current = node;
     if (current === null) {
@@ -155,7 +164,7 @@ private Node delete(Node node, int value) {
 
 * **Traversal** - Once the binary search tree has been created, its elements can be retrieved in-order by recursively traversing the left subtree of the root node, accessing the node itself, then recursively traversing the right subtree of the node, continuing this pattern with each node in the tree as it's recursively accessed. As with all binary trees, one may conduct a pre-order traversal or a post-order traversal, but neither are likely to be useful for binary search trees. An in-order traversal of a binary search tree will always result in a sorted list of node items (numbers, strings or other comparable items).
 
-```
+```text
           6                     
         ↙   ↘              
       4       8
@@ -174,6 +183,7 @@ public void traverseInOrder(Node node) {
         traverseInOrder(node.right);
     }
 }
+
 public void traversePreOrder(Node node) {
     // 6 4 3 5 8 7 9
     if (node !== null) {
@@ -182,6 +192,7 @@ public void traversePreOrder(Node node) {
         traversePreOrder(node.right);
     }
 }
+
 public void traversePostOrder(Node node) {
     // 3 5 4 7 9 8 6
     if (node !== null) {

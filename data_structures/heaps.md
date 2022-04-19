@@ -1,19 +1,24 @@
 # Heaps
 
+([Back to menu](/README.md))
+
 ## About
+
 **Heap** is a special case of balanced binary tree data structure where the root-node key is compared with its children and arranged accordingly. If α has child node β then:
 
-```
+```text
 key(α) ≥ key(β)
 ```
 
 As the value of parent is greater than that of child, this property generates Max Heap. Based on this criteria, a heap can be of two types:
 
-```
+```text
 For Input → 35 33 42 10 14 19 27 44 26 31
 ```
+
 **Min-Heap** − Where the value of the root node is less than or equal to either of its children.
-```
+
+```text
            10                     
         ↙      ↘              
       14            19                
@@ -28,7 +33,8 @@ PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();
 ```
 
 **Max-Heap** − Where the value of the root node is greater than or equal to either of its children.
-```
+
+```text
            44                     
         ↙      ↘              
       42            35                
@@ -72,6 +78,7 @@ Let us derive an algorithm to delete from max heap. Deletion in Max (or Min) Hea
 ![Max Heap Deletion](/data_structures/animations/max_heap_deletion_animation.gif)
 
 Binary Heap
+
 ```Java
 public class BinaryHeap {
   private static final int branches = 2;
@@ -83,26 +90,33 @@ public class BinaryHeap {
     heap = new int[capatiy + 1];
     Arrays.fill(heap, -1);
   }
+
   public boolean isEmpty() {
     return heapSize === 0;
   }
+
   public boolean isFull() {
     return heapSize === heap.length;
   }
+
   private int parent(int node) {
     return (node - 1)/branches;
   }
+
   private int kthChild(int node, int k) {
     return branches * node + k;
   }
+
   private int maxChild() {
     int leftChild = kthChild(heapSize, 1);
     int rightChild = kthChild(heapSize, 2);
     return heap[leftChild] > heap[rightChild] ? leftChild : rightChild;
   }
+
   private int findMax() {
     return isEmpty() ? null : heap[0];
   }
+
   public boolean insert(int data) {
     if (isFull) {
       return false;
@@ -110,6 +124,7 @@ public class BinaryHeap {
     heap[heapSize++] = data;
     shiftHeapUp();
   }
+
   public int delete(int data) {
     if (isEmpty()) {
       return null;
@@ -119,6 +134,7 @@ public class BinaryHeap {
     heapSize--;
     shiftHeapDown();
   }
+
   public void shiftHeapUp() {
     int lastPos = heapSize - 1;
     int temp = heap[lastPos];
@@ -128,6 +144,7 @@ public class BinaryHeap {
     }
     heap[lastPos] = temp;
   }
+  
   public void shiftHeapDown() {
     int child;
     int temp = heap[heapSize];
@@ -146,6 +163,7 @@ public class BinaryHeap {
 ```
 
 Min Heap
+
 ```Java
 class MinHeap { 
     private int heap[];
@@ -231,7 +249,9 @@ class MinHeap {
     } 
 }
 ```
+
 Max Heap
+
 ```Java
 class Heap {
   private ArrayList<Integer> heap;

@@ -1,10 +1,13 @@
 # Coding Cheat Sheets
+
 Simple, quick cheat sheets on computer science concepts.
 
 ## Algorithms
+
 * [Divide and Conquer](/algorithms/divide_and_conquer.md)
 
 ## Data Structures
+
 * [Arrays](/data_structures/arrays.md)
 * [Binary Search Trees](/data_structures/binary_search_trees.md)
 * [Graphs](/data_structures/graphs.md)
@@ -17,6 +20,7 @@ Simple, quick cheat sheets on computer science concepts.
 * [Tries](/data_structures/tries.md)
 
 ## Fundamentals
+
 * [Big-O Notation](/fundamentals/big_o_notation.md)
 * [Recursion](/fundamentals/recursion.md)
 * [Dynamic Programming](/fundamentals/dynamic_programming.md)
@@ -25,16 +29,20 @@ Simple, quick cheat sheets on computer science concepts.
 * [Stack Memory and Heap Space - Java](/fundamentals/stack_and_heap.md)
 
 ## Searching
+
 * [Breadth First Search](/searching/breadth_first_search.md)
 * [Depth First Search](/searching/depth_first_search.md)
 
 ## Sorting
+
 * [Bubble Sort](/sorting/bubblesort.md)
 * [Merge Sort](/sorting/mergesort.md)
 * [Quick Sort](/sorting/quicksort.md)
 
 ## Contribute
+
 Feel free to add pull requests to add information to any of these sheets or create a new one!
 
 ## Notes
+
 Forked from [aspittel's](https://github.com/aspittel/coding-cheat-sheets) original coding sheet. Samples in Java, concepts expanded, and details added.
